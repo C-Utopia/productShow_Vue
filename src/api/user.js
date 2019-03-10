@@ -8,6 +8,14 @@ export function getUserListByPage(filter) {
   })
 }
 
+export function getRoleListByPage(filter) {
+  return request({
+    url: '/sys/role/list',
+    method: 'get',
+    params: { filter }
+  })
+}
+
 export function updateUser(data) {
   return request({
     url: '/sys/user/update',

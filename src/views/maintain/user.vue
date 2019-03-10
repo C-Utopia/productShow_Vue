@@ -2,9 +2,11 @@
   <!-- :rowSelection="{selectedRowKeys: selectedRowKeys, onChange: onSelectChange}" -->
   <div class="container">
     <div class="header">
+
       <a-button type="primary">
         <a-icon type="plus" />新建
       </a-button>
+
       <span style="margin-left: 8px">
         <template v-if="hasSelected">
           <a-button>
@@ -27,6 +29,7 @@
             <a-select-option value="jack">禁用</a-select-option>
             <a-select-option value="lucy">删除</a-select-option>
           </a-select>
+
         </template>
       </span>
 
@@ -40,7 +43,9 @@
           > 清空</span>
         </template>
       </div>
+
     </div>
+
     <a-table
       :columns="columns"
       :data-source="data"
@@ -70,13 +75,17 @@
             >修改</a>
           </span>
         </div>
+
       </template>
     </a-table>
 
   </div>
 
 </template>
+
 <script>
+
+import { getRoleListByPage, getUserListByPage } from '@/api/user'
 
 /** const columns = [{
   title: '角色',
@@ -142,9 +151,9 @@ export default {
       columns: '',
       roleList: '', // 动态角色列表，存放后台的角色列表
       userList: '', // 用户数据列表，存放每一页的用户数据
-      currentPage: '', // 动态页码
+      currentPage: 1, // 动态页码，初始1
       filter: { // 筛选器
-        roles: '', // 角色筛选条件（若默认所有，则 roles = roleList）
+        roleIds: [], // 角色筛选条件（若默认所有，则 roles = roleList）
         sex: '', //  性别筛选条件
         disabled: '' // "是否启用"筛选条件（传 1 或 0）
       }
@@ -156,6 +165,23 @@ export default {
     }
   },
   methods: {
+    init() {
+      this.initRoleList()
+      this.initUserList()
+    },
+    initRoleList() {
+      getRoleListByPage({ page: 1 }).then(response => {
+        console.log('初始化角色列表： ' + response)
+        this.roleList = response.data
+      })
+    },
+    initUserList() {
+      getUserListByPage({ page: 1 }).then(response => {
+        console.log('初始化用户列表： ' + response)
+        this.userList = response.data
+      })
+    },
+
     onSelectChange(selectedRowKeys) {
       console.log('selectedRowKeys changed: ', selectedRowKeys)
       this.selectedRowKeys = selectedRowKeys
