@@ -85,7 +85,7 @@
 
 <script>
 
-import { getRoleListByPage, getUserListByPage } from '@/api/user'
+import { getRoleListByPage, getUserListByPage, updateUser, deleteUser } from '@/api/user'
 
 /** const columns = [{
   title: '角色',
@@ -179,6 +179,20 @@ export default {
       getUserListByPage({ page: 1 }).then(response => {
         console.log('初始化用户列表： ' + response)
         this.userList = response.data
+      })
+    },
+
+    // 批量修改，只涉及“启用/禁用”
+    mutilUpdate() {
+      updateUser({ id: 0, ids: this.selectedRowKeys }).then(response => {
+        console.log('批量“启用/禁用”： ' + response)
+      })
+    },
+
+    // 批量删除，记得传id=0
+    mutilDelete() {
+      deleteUser({ id: 0, ids: this.selectedRowKeys }).then(response => {
+        console.log('批量删除： ' + response)
       })
     },
 
