@@ -23,6 +23,21 @@ export function updateUser(data) {
     data
   })
 }
+
+export function test (data) {
+  // const data = {
+  //   roleId,
+  //   userName,
+  //   sex,
+  //   password,
+  //   loginCode
+  // }
+  return request({
+    url: '/sys/user/test',
+    method: 'post',
+    data
+  })
+}
 export function addUser(roleId,userName,sex,password,loginCode) {
     const data = {
       roleId,

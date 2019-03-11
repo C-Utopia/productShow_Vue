@@ -471,6 +471,8 @@ export default {
 
     // 批量修改，只涉及“启用/禁用”
     mutilUpdate () {
+
+      
       updateUser({ id: 0, ids: this.selectedRowKeys,disabled:1 }).then(response => {
         console.log('批量“启用/禁用”',response)
       })
@@ -571,6 +573,7 @@ export default {
 
 .table {
   width: 95%;
+  min-height: 400px;
   background-color: #fff;
   margin: 0 auto;
   padding: 20px;
