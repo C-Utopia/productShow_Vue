@@ -41,6 +41,19 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       : false,
     publicPath: config.dev.assetsPublicPath,
     proxy: config.dev.proxyTable,
+
+
+    // proxy: {
+    //   '/': {
+    //     target: 'https://zengtianyi.top/ant1',
+    //     pathRewrite: {
+    //       '^/api': ''
+    //     },
+    //     changeOrigin: true, // target是域名的话，需要这个参数，
+    //     secure: false, // 设置支持https协议的代理
+    //   },
+    // },
+
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll

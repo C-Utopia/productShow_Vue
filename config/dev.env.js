@@ -1,5 +1,5 @@
 module.exports = {
-  NODE_ENV: '"development"',
+  NODE_ENV: ' "development"',
   ENV_CONFIG: '"dev"',
-  BASE_API: '"https://zengtianyi.top/ant1"'
+  BASE_API: '"http://localhost:8888/ant1"'
 }

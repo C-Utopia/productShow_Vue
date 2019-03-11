@@ -4,7 +4,7 @@ export function getUserListByPage(filter) {
   return request({
     url: '/sys/user/list',
     method: 'get',
-    params: { filter }
+    params: filter
   })
 }
 
@@ -12,7 +12,7 @@ export function getRoleListByPage(filter) {
   return request({
     url: '/sys/role/list',
     method: 'get',
-    params: { filter }
+    params: filter 
   })
 }
 
@@ -23,7 +23,14 @@ export function updateUser(data) {
     data
   })
 }
-export function addUser(data) {
+export function addUser(roleId,userName,sex,password,loginCode) {
+    const data = {
+      roleId,
+      userName,
+      sex,
+      password,
+      loginCode
+    }
   return request({
     url: '/sys/user/add',
     method: 'post',

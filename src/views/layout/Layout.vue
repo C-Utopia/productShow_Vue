@@ -17,9 +17,9 @@
       <app-main />
     </div>
     <!-- 弹出层 -->
-    <div class="modal">
-      <modal :visible="true" />
-    </div>
+    <!-- <div class="modal" v-if="visible" >
+      <modal @close="closeModal"/>
+    </div> -->
 
   </div>
 </template>
@@ -36,6 +36,11 @@ export default {
     AppMain,
     TagsView,
     modal
+  },
+  data(){
+    return{
+      visible:false
+    }
   },
   mixins: [ResizeMixin],
   computed: {
@@ -57,6 +62,10 @@ export default {
   methods: {
     handleClickOutside () {
       this.$store.dispatch('closeSideBar', { withoutAnimation: false })
+    },
+    closeModal(){
+      console.log("ccc")
+      this.visible = false
     }
   }
 }
